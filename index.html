@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chad Reed - cs4590 Summer 2014 - HW2</title>
+    <script src="js/mixerOne.js"></script>
+    <script src="js/mixerTwo.js"></script>
+    <script src="js/fade.js"></script>
+	<script src="js/selectTrack.js"></script>
+	<script src="js/filter.js"></script>
+	<script src="js/volume.js"></script>
+	<script src="js/effects.js"></script>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/mystyle.css" />
+  <body>
+  
+    <div class="row">
+      <div class="large-12 columns">
+        <h1>Chad Reed - CS4590 Summer 2014 - HW2</h1>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="large-12 columns">
+  	    <div class="callout panel">
+		  <center>Fade</center>
+          <input type="range" class="fullwidth" id="fade" value="50" onclick="fade()">
+  	    </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-5 medium-5 columns">
+        <div class="callout panel">
+          <center>
+		    <input type="range" class="fullwidth" id="mixerOne" value="50" onclick="mixerOneMove()">
+	      </center>
+		  <p>
+		    <center>
+		      <button type="button" onclick="fillFirstOscillator()">Oscillator</button>
+			  <button type="button" onclick="fillFirstTrack()">Track</button>
+		    </center>
+		  </p>
+          <center>
+		    <select id="firstTrack"></select>
+	      </center>
+		  <center>
+		    <button type="button" onclick="selectFirstTrack(soundBuffer1)">Load Track</button>
+		  </center>
+		</div>
+      </div>
+      <div class="large-2 medium-2 small-2 columns">
+        <div class="callout panel">
+		  <center>Master</center>
+		  <center>Volume</center>
+		  <p>
+		    <center>
+			  <input type="range" class="vert" id="masterVolume" value="100" onclick="masterVolume()">
+			</center>
+	      </p>
+        </div>
+  	  </div>
+	  <div class="large-5 medium-5 columns">
+        <div class="callout panel">
+          <input type="range" class="fullwidth" id="mixerTwo" value="50" onclick="mixerTwoMove()">
+	      <p>
+		    <center>
+	          <button type="button" onclick="fillSecondOscillator()">Oscillator</button>
+		      <button type="button" onclick="fillSecondTrack()">Track</button>
+	        </center>
+		  </p>
+          <center>
+	        <select id="secondTrack"></select>
+          </center>
+	      <center>
+	        <button type="button" onclick="selectSecondTrack(soundBuffer2)">Load Track</button>
+	      </center>
+		</div>
+      </div>
+    </div>
+	<div class="row">
+      <div class="large-1 medium-1 small-1 columns">
+        <div class="callout panel">
+		  <p><center>vol</center></p>
+		  <p>
+		    <center>
+			  <input type="range" class="vert" id="vol1" value="100" onclick="volMove(1)">
+			</center>
+		  </p>
+        </div>
+  	  </div>
+      <div class="large-1 medium-1 small-1 columns">
+        <div class="callout panel">
+		  <p><center>hi</center></p>
+		  <p>
+		    <center>
+		      <input type="range" class="vert" id="hiFilterOne" value="100" onclick="hiFilterMove(1)">
+			</center>
+		  </p>
+        </div>
+  	  </div>
+      <div class="large-1 medium-1 small-1 columns">
+        <div class="callout panel">
+		  <p><center>lo</center></p>
+		  <p>
+		    <center>
+			  <input type="range" class="vert" id="loFilterOne" value="100" onclick="loFilterMove(1)">
+			</center>
+		  </p>
+        </div>
+  	  </div>
+      <div class="large-6 medium-6 small-6 columns">
+        <div class="callout panel">
+		  <p>
+		    <button onclick="playSound()">Play</button>
+			<button onclick="pauseSound()">Pause</button>
+  		    <button onclick="stopSound()">Stop</button>
+  	   	    <button onclick="reloadPage()">Reset</button>
+		  </p>
+		  <p>
+		    <button onclick="doSomething()">eFX1</button>
+	   	    <button onclick="doSomething()">eFX2</button>
+		    <button onclick="doSomething()">eFX3</button>
+	   	    <button onclick="doSomething()">eFX4</button>
+		  </p>
+		  <p>
+	        <button onclick="doSomething()">eFX5</button>
+   	        <button onclick="doSomething()">eFX6</button>
+	        <button onclick="doSomething()">eFX7</button>
+   	        <button onclick="doSomething()">eFX8</button>
+	 	  </p>
+        </div>
+  	  </div>
+      <div class="large-1 medium-1 small-1 columns">
+        <div class="callout panel">
+		  <p><center>lo</center></p>
+		  <p>
+		    <center>
+			  <input type="range" class="vert" id="loFilterTwo" value="100" onclick="loFilterMove(2)">
+			</center>
+		  </p>
+        </div>
+  	  </div>
+      <div class="large-1 medium-1 small-1 columns">
+        <div class="callout panel">
+		  <p><center>hi</center></p>
+		  <p>
+		    <center>
+		 	  <input type="range" class="vert" id="hiFilterTwo" value="100" onclick="hiFilterMove(2)">
+			</center>
+		  </p>
+        </div>
+  	  </div>
+      <div class="large-1 medium-1 small-1 columns">
+        <div class="callout panel">
+		  <p><center>vol</center></p>
+		  <p>
+		    <center>
+			  <input type="range" class="vert" id="vol2" value="100" onclick="volMove(2)">
+			</center>
+		  </p>
+        </div>
+  	  </div>     
+  	</div>
+<p id="demo1"></p> <p id="demo2"></p> <p id="demo3"></p> <p id="v1"></p>
+
+
+
+</body>
+</html>
